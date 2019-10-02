@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/activitytwo/activitytwo",
+    "pages/login/login",
+    "pages/activityone/activityone",
+    "pages/resultone/resultone",
+    "pages/resulttwo/resulttwo",
+    "pages/answer/answer",
+    "pages/Introduc/Introduc"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "我的婚礼请柬",
+    "navigationBarBackgroundColor": "#e6f6f9",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle":"light",
+    "onReachBottomDistance":"200"
+  },
+  "networkTimeout": {
+    "request": 10000000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

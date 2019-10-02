@@ -1,0 +1,55 @@
+<!-- 微信运动 -->
+<view class="activity1">
+  <image src="/image/personal/activity1.png" class="activity1_bg"></image>
+  <image src="/image/img/go_Main.png" class="gomainBtn" bindtap='gomain'></image>
+  <view class="homePage">
+    <view class="home">
+      <view class="userInfo">
+        <open-data type="userAvatarUrl" class="avatar"></open-data>
+        <open-data type="userNickName" class="nickName"></open-data>
+        <view class="answerRank" wx:if="{{personalRank}}">
+          答题排名第<text>{{activity1Homepage.personalRank}}</text>名
+        </view>
+        <view class="answerRank" wx:if="{{!personalRank}}">未进排名</view>  
+        <view class="questionNum">
+          <view>
+            <text>今日答题</text>
+            <text class="num">{{activity1Homepage.today_question}}</text>
+          </view>
+          <view class="border_l"></view>
+          <view>
+            <text>累计答题</text>
+            <text class="num">{{activity1Homepage.total_question}}</text>
+          </view>
+        </view>
+        <button bindtap='startAnswer'  lang="zh_CN" class="save-btn">开始答题</button>
+        <view class="activityTime">
+          距离活动结束:<text wx:for="{{time}}" wx:key="item">{{item}}</text>
+        </view>
+        <image src="/image/personal/activity1_icon.png" class='activity1_icon' hidden="{{!moreflag}}" id="{{phoneX?'phoneX':''}}"></image>
+      </view>
+      <view class="rank">
+        <view class='rank_title'>当前排行</view>
+        <view class="table">
+          <view class="tr">
+            <view wx:for="{{rankTitle}}" wx:for-index="index" wx:key="item" class="th {{index==2 ? 'phone' : ''}}">{{item}}</view>
+          </view>
+          <view class="tr" wx:for="{{activity1Homepage.rankList}}" wx:for-index="index" wx:key="{{item.ranking}}">
+            <view class="td">
+               <image src="/image/personal/rank_{{item.ranking > 3 ? 4 : index+1}}.png" class="icon_trophy"></image>
+              <view class="rank_num {{item.ranking>3 ? 'color_4F4F4F' : ''}}"><text>{{item.ranking}}</text></view>
+            </view>
+            <view class="td">{{item.userName}}</view>
+            <view class="td phone">{{item.identity}}</view>
+            <view class="td {{item.ranking < 4 ? 'color_F19E38' : ''}}">{{item.answerCount}}</view>
+          </view>
+        </view>
+        <view class='rank_title down'>
+          <text wx:if="{{personalRank}}">当前排名第{{activity1Homepage.personalRank}}名，继续加油哦～</text>
+          <text wx:if="{{!personalRank}}">您尚未进排名，请先答题哦~</text>
+        </view>
+      </view>
+      <view class="activity_des">活动期间，每位用户都可参与每天2轮的答题游戏，3天内累计答对题目前10名赢得直通名额。每轮答题时间5分钟，任一题目答错，本轮游戏即行终止。(注:为求公正，答题期间不允许退出小程序，否则消耗一次答题机会)</view>
+    </view>
+  </view>
+</view>

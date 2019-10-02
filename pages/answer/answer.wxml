@@ -1,0 +1,31 @@
+<view class="question">
+  <image src="/image/question/question_bg.png" class="question_bg"></image>
+   <view class="question_wrap">
+    <view class="question_content">
+      <view class="time">
+        <image src="/image/question/time.png"></image>{{countDown}}
+      </view>
+      <view class="content">
+        <view class="title">{{activeQ+1}}. {{question.name}}</view>
+        <view wx:for="{{question.options}}" wx:key="unique" class="option"  data-id='{{index+1}}' bindtap='checkAnswer'>
+        <!-- 不支持该语法<view>{{index==0 ？ 'A' : index== ？ 'B' : 'C'}}{{item[index]}}</view>   -->
+          <view wx:if="{{index==0}}">
+            <!-- <view class='noCheck'>A</view> -->
+            <view class="checkbas {{checkNum==1 ? 'check' : 'noCheck'}}">A</view>
+            <view class="{{checkNum==1 ? 'answer' : 'basAnswer'}}">{{item}}</view>
+          </view>
+          <view wx:elif="{{index==1}}">
+            <view class="checkbas {{checkNum==2 ? 'check' : 'noCheck'}}">B</view>
+            <view class="{{checkNum==2 ? 'answer' : 'basAnswer'}}">{{item}}</view>
+          </view>
+          <view wx:else="{{index==2}}">
+            <view class="checkbas {{checkNum==3 ? 'check' : 'noCheck'}}">C</view>
+            <view class="{{checkNum==3 ? 'answer' : 'basAnswer'}}">{{item}}</view>
+          </view>
+        </view>
+      </view> 
+    </view>
+    <button bindtap='nextQuestion' lang="zh_CN" class="save-btn">下一题</button>
+  </view>
+  
+</view>

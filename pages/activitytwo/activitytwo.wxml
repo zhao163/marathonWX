@@ -1,0 +1,55 @@
+<!-- 微信运动 -->
+<view class="activity1">
+  <image src="/image/personal/activity2.png" class="activity1_bg"></image>
+   <image src="/image/img/go_Main.png" class="gomainBtn" bindtap='gomain'></image>
+  <view class="homePage">
+    <view class="home">
+      <view class="userInfo">
+        <open-data type="userAvatarUrl" class="avatar"></open-data>
+        <open-data type="userNickName" class="nickName"></open-data>
+        <view class="answerRank">
+          绿证数量第<text>{{activity1Homepage.rankSelf.rownum}}</text>名
+        </view>
+        <!-- <image src="/image/personal/activity2_icon.png" class='activity2_icon.png'></image> -->
+        <button bindtap='buyGreenCard'  lang="zh_CN" class="save-btn">继续购买绿证</button>
+        <view class='activityTime'>
+          距离活动结束:<text wx:for="{{time}}" wx:key="item">{{item}}</text>
+        </view>
+        <image src="/image/personal/activity1_icon.png" class='activity1_icon' hidden="{{!moreflag}}" id="{{phoneX?'phoneX':''}}" ></image>
+      </view>
+      <view class="rank">
+        <view class='rank_title'>当前排行</view>
+        <view class="table">
+          <view class="tr">
+            <view wx:for="{{rankTitle}}" wx:for-index="index" wx:key="item" class="th {{index==2 ? 'phone' : ''}}">{{item}}</view>
+          </view>
+          <view class="tr" wx:for="{{activity1Homepage.list}}" wx:key="{{item}}">
+            <view class="td">
+              <image src="/image/personal/rank_{{item.rownum > 3 ? 4 : index+1}}.png" class="icon_trophy"></image>
+              <view class="rank_num {{item.rownum>3 ? 'color_4F4F4F' : ''}}"><text>{{item.rownum}}</text></view>
+            </view>
+            <view class="td">{{item.fdUserRealName}}</view>
+            <view class="td phone">{{item.fdUserIdentity}}</view>
+            <view class="td {{item.rownum < 4 ? 'color_F19E38' : ''}}">{{item.fdGreenCardCount}}</view>
+          </view>
+        </view>
+        <view class='rank_title down'>当前排名第{{activity1Homepage.rankSelf.rownum}}名，继续加油哦～</view>
+      </view>
+      <view class="activity_des">活动期间三天，参与“苏富比模式”的用户，都有可能获得2018北京马拉松直通名额，10个北马直通名额等您赢！</view>
+    </view>
+  </view>
+  <view class="green_dialog_wrap" wx:if="{{greenDialog_show}}" catchtouchmove="preventTouchMove">
+    <view class="green_dialog" bindtap='close'>
+      <image src='/image/img/close_dialog.png' class='close_dialog' bindtap='close'></image>
+      <view class="green_text">每购买一张2018北马纪念版绿证，金风科技将为指定贫困地区学校捐赠价值50元图书或其他学校需要的教学用品。</view>
+      <button class="green_btn" lang="zh_CN" bindtap='buyCommemorate'>购买2018北马纪念版绿证</button>
+      <button class="green_btn custom_btn" lang="zh_CN" bindtap='buyCustom'>购买常规版绿证</button>
+    </view>
+  </view>
+  <view wx:if="{{commemorateGreenCart}}">
+    <web-view src="https://bmweixin.tianrun.cn/gctrade/wshop/loginAndRegistration/goLogin.jhtml?hd=152&redirectUrl=%2Fgctrade%2Fwshop%2Fproduct%2Fcontent%2F152.jhtml"></web-view>
+  </view>
+  <view wx:if="{{conventionalGreenCart}}">
+    <web-view src="https://bmweixin.tianrun.cn/gctrade/wshop/product/list.jhtml"></web-view>
+  </view>
+</view>

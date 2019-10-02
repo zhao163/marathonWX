@@ -1,0 +1,5 @@
+<view class="des_wrap">
+  <image src="http://47.104.253.141:6066/1.png"wx:if="{{activityOne}}"></image>
+  <image src="http://47.104.253.141:6066/2.png" wx:if="{{!activityOne}}"></image>
+  <image src="../../image/img/participate.png" class="participateBtn" bindtap="goLogin"></image>
+</view>

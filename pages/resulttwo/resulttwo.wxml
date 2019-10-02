@@ -1,0 +1,65 @@
+<view class="wrap">
+  <view class="main_bg">
+    <image src="/image/result/result_bg.png"></image>
+  </view>
+  <!--答题量中奖名单  -->
+  <view class="container">
+    <view class="play_one">
+      <image src="/image/result/playtwo_1.png" class="play_one_title"></image>
+    </view>
+    <view class="table_title">
+      <view class="rank">综合排名</view>
+      <view class="name">姓名</view>
+      <view class="tel">身份证后六位</view>
+      <view class="num">绿证数</view>
+    </view>
+    <view class="table_content">
+      <view class="tr" wx:for="{{listArrRank}}" wx:key="{{item.rownum}}">
+        <view class="rank">
+          <image src="/image/result/gold.png" wx:if="{{item.rownum==1}}"></image>
+          <image src="/image/result/second.png" wx:elif="{{item.rownum==2}}"></image>
+          <image src="/image/result/thrid.png" wx:elif="{{item.rownum==3}}"></image>
+          <text wx:else>{{item.rownum}}</text> 
+        </view>
+        <view class="name">{{item.fdUserRealName}}</view>
+        <view class="tel">{{item.fdUserIdentity}}</view>
+        <view class="num">{{item.fdGreenCardCount}}</view>
+      </view>
+      <view class="detail">
+      注：绿证数相同，以随机抽取的方式决定排名。
+      </view>
+    </view>
+  </view>
+
+<!--随机活动抽取中奖名单  -->
+   <view class="container container_second" wx:if="{{listArrRandom}}">
+    <view class="play_one">
+      <image src="/image/result/playone_1.png" class="play_two_title"></image>
+    </view>
+    <view class="table_title">
+      <view class="rank">综合排名</view>
+      <view class="name">姓名</view>
+      <view class="tel">身份证后六位</view>
+      <view class="num">绿证数</view>
+    </view>
+    <view class="table_content">
+      <view class="tr" wx:for="{{listArrRandom}}" wx:key="{{item.fdUserIdentity}}">
+        <view class="rank">{{index+1}}</view>
+        <view class="name">{{item.fdUserRealName}}</view>
+        <view class="tel">{{item.fdUserIdentity}}</view>
+        <view class="num">{{item.fdGreenCardCount}}</view>
+      </view>
+      <view class="detail">
+      注：每人最多仅允许获得一次奖励。
+      </view>
+    </view>
+  </view>
+    <view class="forcast">
+感谢您关注北马绿电侠活动,
+恭喜每一位幸运的北马绿电侠,
+并预祝大家在马拉松赛道上风驰电掣！
+中奖人员，稍后工作人员会联系您！
+  </view>
+  <view class="winn_btn" bindtap='pageToActivityOne'>一期中奖名单<image src="/image/result/leftArrow.png" class="leftArrow"></image></view>
+  <image src="/image/result/result_bottom.png" class="bottom_img"></image>
+</view>

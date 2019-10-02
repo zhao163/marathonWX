@@ -1,0 +1,54 @@
+ <view class="container">
+  <form bindsubmit="getUserInfo">
+    <view class="form-box">
+      <button class="greenCardBtn" lang="zh_CN" bindtap="buyGreenCard">购买绿证</button>
+      <view class="prompt_text">完成个人绿证购买即可参加跑马活动</view>
+      
+      <view class="green_aisle">
+        <view class="grad_wrap" >
+          <image src='/image/personal/line.png' class="line" bindtap='close'></image>
+          <text class="green_title">开启您的绿色北马之路</text>
+        </view>
+        <view class="row-wrap">
+          <view class="label">身份证号</view>
+          <view class="label-right">
+            <input name="fdUserIdentity" class="input" maxlength="6" type="idcard" auto-focus placeholder="身份证号后六位" value="{{userInfo.fdUserIdentity}}" bindfocus="bindfocus" disabled='{{isDisable}}'/>
+          </view>
+        </view>
+        <view class="row-wrap">
+          <view class="label">手机号码</view>
+          <view class="label-right">
+            <input name="fdUserPhone" class="input" maxlength="11" type="number" placeholder="11位手机号码" value="{{userInfo.fdUserPhone}}" bindfocus="bindfocus" disabled='{{isDisable}}'/>
+          </view>
+        </view>
+        <view wx:if="{{!getUserInfoBtn}}">
+          <view class="row-wrap">
+            <view class="label"> 姓  名 </view>
+            <view class="label-right">{{userInfo.fdUserRealName}}</view>
+          </view>
+          <view class="row-wrap">
+            <view class="label">绿证个数</view>
+            <view class="label-right">{{greenCardCount}}</view>
+          </view>
+        </view>
+        <button class="{{isGreenCard ? 'btn' : 'allInfoBtn'}}" formType="submit" lang="zh_CN" wx:if="{{getUserInfoBtn || isGreenCard}}" disabled="{{!getUserInfoBtn || isGreenCard}}">验证您的个人信息及绿证信息</button>
+        <button class="allInfoBtn" lang="zh_4CN" wx:if="{{!getUserInfoBtn}}" bindtap="confirm">确认无误</button> 
+        <view class="prompt_err" wx:if="{{isGreenCard}}">您还不是绿电侠，购买绿证即可成为绿电侠参与跑马活动</view>
+      </view>
+    </view>
+  </form>
+  <view class="green_dialog_wrap" wx:if="{{greenDialog_show}}" bindtap='close'>
+    <view class="green_dialog" bindtap='close'>
+      <image src='/image/img/close_dialog.png' class='close_dialog' bindtap='close'></image>
+      <view class="green_text">每购买一张2018北马纪念版绿证，金风科技将为指定贫困地区学校捐赠价值50元图书或其他学校需要的教学用品。</view>
+      <button class="green_btn" lang="zh_CN" bindtap="buyCommemorate">购买2018北马纪念版绿证</button>
+      <button class="green_btn custom_btn" lang="zh_C19511XN" bindtap="buyCustom">购买常规版绿证</button>
+    </view>
+  </view>
+  <view wx:if="{{commemorateGreenCart}}">
+    <web-view src="https://bmweixin.tianrun.cn/gctrade/wshop/loginAndRegistration/goLogin.jhtml?hd=152&redirectUrl=%2Fgctrade%2Fwshop%2Fproduct%2Fcontent%2F152.jhtml"></web-view>
+  </view>
+  <view wx:if="{{conventionalGreenCart}}">
+    <web-view src="https://bmweixin.tianrun.cn/gctrade/wshop/product/list.jhtml"></web-view>
+  </view>
+</view> 

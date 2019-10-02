@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class='flex-wrp'>
+  <view class="one">
+    <image src='/image/img/rank.png' class="ranklogo" bindtap='getWinnersList' wx:if="{{activitytwoShow}}"></image>
+    <image src='/image/img/main_bg2.png' class="mainbg" wx:if="{{activitytwoShow}}"></image>
+    <image src='/image/img/main_bg.png' class="mainbg" wx:if="{{!activitytwoShow}}"></image>
+    <image src='/image/img/main_btn.png' class="mainbtn" bindtap='describeShow'></image>
+  </view>
+  <!-- 二期活动预测 -->
+    <view class="forcasttwo_wrap" wx:if="{{activityNotice}}" catchtap='hideFrocastTwo'>
+      <image src="/image/img/forcasttwo.png" class="forcasttwo_img"></image>
+      <view class="forcasttwo_text">“绿电侠归来”将于{{activitytwoTime}}正式上线，最后一次赢取北马门票机会，奖励多多！！ </view>
+    </view>
+  </view>
